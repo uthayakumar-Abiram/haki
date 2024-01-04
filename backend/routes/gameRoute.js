@@ -5,7 +5,6 @@ import {
   getAllProduct,
   updateProduct,
   deleteProduct,
-  rating,
 } from"../Controllers/gameController.js";
 
 import { isAdmin, protect } from "../middleware/authMiddleware.js";

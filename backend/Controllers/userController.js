@@ -26,6 +26,10 @@ else{
 }
      });
 
+
+// des Auth user/set token
+// route POST /api/users/admin-login
+// access admin
      const loginAdmin = asynchandler(async (req, res) => {
       const {email,password}=req.body
       const user = await User.findOne({email});
@@ -46,7 +50,7 @@ else{
  }
      });
 // @desc register user/set token
-// route POST /api/users
+// route POST /api/users/reg
 // @access Public
 const registerUser = asynchandler(async(req,res) => {
     const {name,email,password,role}=req.body;
@@ -85,7 +89,7 @@ const registerUser = asynchandler(async(req,res) => {
 
 
 // @desc logout user/set token
-// route POST /api/users
+// route POST /api/users/lpgout
 // @access Public
 const logoutUser = asynchandler(async(req, res) => {
 
