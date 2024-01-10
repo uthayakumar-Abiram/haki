@@ -22,4 +22,4 @@ var libSchema = new mongoose.Schema(
 );
 
 //Export the model
-module.exports = mongoose.model("lib", cartSchema);
+module.exports = mongoose.model("lib", libSchema);

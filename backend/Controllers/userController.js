@@ -40,15 +40,14 @@ else{
         _id:user._id,
         name:user.name,
         email:user.email,
-        role:user.role,
-        password:user.password
+        role:user.role
     })
 }
   else{
     res.status(401)
     throw new Error('Invaild email or password')
  }
-     });
+   });
 // @desc register user/set token
 // route POST /api/users/reg
 // @access Public
@@ -89,7 +88,7 @@ const registerUser = asynchandler(async(req,res) => {
 
 
 // @desc logout user/set token
-// route POST /api/users/lpgout
+// route POST /api/users/logout
 // @access Public
 const logoutUser = asynchandler(async(req, res) => {
 
@@ -137,18 +136,16 @@ const logoutUser = asynchandler(async(req, res) => {
         });
         
         const deleteUser = async (req, res, next) => {
-            const { id } = req.body
-            await User.findById(id)
-              .then(user => user.remove())
-              .then(user =>
-                res.status(201).json({ message: "User successfully deleted", user })
-              )
-              .catch(error =>
-                res
-                  .status(400)
-                  .json({ message: "An error occurred", error: error.message })
-              )
-        }
+
+            const { id }  = req.body;
+            const user= await User.findOne({email})
+              try {
+                const deleteProduct = await User.findByIdAndDelete(user._id);
+                res.json(deleteProduct);
+              } catch (error) {
+                throw new Error(error);
+              }
+            };
 
   
     export {authUser,registerUser,getUserProfile,logoutUser,updateUserProfile,deleteUser,loginAdmin};

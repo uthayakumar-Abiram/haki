@@ -25,7 +25,6 @@ var productSchema = new mongoose.Schema(
     category: {
       type: String,
     },
- 
     images: [
       {
         public_id: String,
@@ -36,8 +35,8 @@ var productSchema = new mongoose.Schema(
     tags: String,
     ratings: [
       {
-        star: Number,
-        comment: String,
+        star: {type:Number},
+        comment:{ type:String},
         postedby: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
       },
     ],
@@ -45,6 +44,7 @@ var productSchema = new mongoose.Schema(
       type: String,
       default: 0,
     },
+   
   },
   { timestamps: true }
 );
