@@ -4,17 +4,31 @@ import asyncHandler from"express-async-handler";
 import slugify from "slugify";
 import validateMongoDbId from "../utils/validateMongodbId.js";
 import fs from"fs";
-
+import { cloudinaryUploadImg } from "../utils/cloudinar.js";
 // des Auth user/set token
 // route POST /api/product/
 // access admin
 const createProduct = asyncHandler(async (req, res) => {
   try {
     if (req.body.title) {
-      req.body.slug = slugify(req.body.title);
+      req.body.slug = slugify(req.body.title);  
     }
-    
-    const newProduct = await Product.create(...req.body,images);
+    const uploader = (path) => cloudinaryUploadImg(path, "images");
+    const urls = [];
+    const files = req.files;
+    for  (const file of files) {
+      const { path } = file;
+      const newpath = await uploader(path);
+      console.log(newpath);
+      urls.push(newpath);
+      fs.unlinkSync(path);
+    }
+    const {price,title,requirement,category,totalrating,ratings,slug} = req.body;
+    const images = urls.map((file) => {
+      return file;
+
+    });
+    const newProduct = await Product.create({slug,price,title,requirement,category,totalrating,ratings,images});
     res.json(newProduct);
   } catch (error) {
     throw new Error(error);
@@ -22,6 +36,7 @@ const createProduct = asyncHandler(async (req, res) => {
 });
 
 // des Auth user/set token
+
 // route  /api/product/:id
 // access admin
 const updateProduct = asyncHandler(async (req, res) => {

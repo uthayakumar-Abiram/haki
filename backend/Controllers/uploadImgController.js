@@ -1,6 +1,5 @@
 import fs from"fs";
 import asyncHandler from"express-async-handler";
-
 import {
   cloudinaryUploadImg,
   cloudinaryDeleteImg,

@@ -16,7 +16,7 @@ import { isAdmin, protect } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 router.post("/", protect, isAdmin,upload.array("images", 1),
- createProduct,uploadImages);
+ createProduct);
 
  router.post("/bill", getBill)
 router.get("/:id", getaProduct);
