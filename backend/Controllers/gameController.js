@@ -13,7 +13,7 @@ const createProduct = asyncHandler(async (req, res) => {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);  
     }
-    const uploader = (path) => cloudinaryUploadImg(path, "images");
+    const uploader = (path) => cloudinaryUploadImg(path);
     const urls = [];
     const files = req.files;
     for  (const file of files) {

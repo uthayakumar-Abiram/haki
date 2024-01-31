@@ -1,9 +1,9 @@
 import express from 'express';
 const router = express. Router();
-import { deleteUser,authUser,registerUser,getUserProfile,logoutUser,updateUserProfile,loginAdmin
+import {getUsers, deleteUser,authUser,registerUser,getUserProfile,logoutUser,updateUserProfile,loginAdmin
 } from '../Controllers/userController.js';
 import { protect,isAdmin } from '../middleware/authMiddleware.js';
-router.post('/reg',registerUser);
+router.route("/").post(registerUser).get(protect,isAdmin, getUsers);
 router.post('/auth', authUser);
 router.post("/admin-login",loginAdmin);
 router.post("/admin-logout",logoutUser)

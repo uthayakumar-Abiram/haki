@@ -1,1 +1,29 @@
-/*# sourceMappingURL=index.css.map */
+main {
+    min-height: 80vh;
+}
+
+h3{
+    padding: 1rem 0;
+}
+.new{
+  
+    margin-top: 5px;
+}
+.abi{
+    margin-left: 45rem;
+    margin-top: 5px;
+    border-radius: 55px;
+}
+h1 {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+}
+
+h2 {
+ font-size: 1.4rem;
+ padding: 0.5rem 0;
+}
+
+.rating span {
+    margin: 0.1rem;
+}

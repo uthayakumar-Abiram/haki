@@ -17,7 +17,8 @@ const authUser = asynchandler(async(req, res) => {
         _id:user._id,
         name:user.name,
         email:user.email,
-        password:user.password
+        password:user.password,
+        role:user.role
     })
 }
 else{
@@ -86,7 +87,11 @@ const registerUser = asynchandler(async(req,res) => {
   
 });
 
-
+const getUsers = asynchandler(async (req, res) => {
+    const users = await User.find({});
+    res.json(users);
+  });
+  
 // @desc logout user/set token
 // route POST /api/users/logout
 // @access Public
@@ -104,10 +109,23 @@ const logoutUser = asynchandler(async(req, res) => {
 // route GET /api/Profile
 // @access Public
 
-    const getUserProfile = asynchandler(async(req, res) => {
-        res.status (200).json ({ message: ' User profile' });
-        });
-    
+    const getUserProfile = asynchandler(async (req, res) => {
+        const user = await User.findById(req.user._id);
+      
+        if (user) {
+          res.json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isAdmin: user.isAdmi
+          });
+        } else {
+          res.status(401);
+          throw new Error("Invalid email or password");
+        }
+      });
+      
+      
 
 // @desc update user profile
 // route GET /api/Profile
@@ -148,4 +166,4 @@ const logoutUser = asynchandler(async(req, res) => {
             };
 
   
-    export {authUser,registerUser,getUserProfile,logoutUser,updateUserProfile,deleteUser,loginAdmin};
+    export {authUser,registerUser,getUserProfile,logoutUser,updateUserProfile,deleteUser,loginAdmin ,getUsers};
