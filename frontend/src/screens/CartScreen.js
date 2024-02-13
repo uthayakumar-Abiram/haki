@@ -44,6 +44,8 @@ const CartScreen = () => {
   }
 
   return (
+    <>
+    <div className="space"></div>
     <Row>
       <Col md={8}>
         <h1>Shoping Cart</h1>
@@ -57,10 +59,10 @@ const CartScreen = () => {
               <ListGroupItem key={item.product}>
                 <Row>
                   <Col md={2}>
-                    <Image src={item.images} alt={item.name} fluid rounded />
+                    <Image src={item.images?.[0]?.url} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={2}>
-                    <Link to={`/product/${item.product}`}>gta{item.title}</Link>
+                    <Link to={`/product/${item.product}`}>{item.title}</Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>
@@ -114,6 +116,7 @@ const CartScreen = () => {
         </Card>
       </Col>
     </Row>
+    </>
   );
 };
 

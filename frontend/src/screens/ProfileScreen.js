@@ -69,6 +69,8 @@ const ProfileScreen = ({ location }) => {
     }
   };
   return (
+    <>
+     <div className="space"></div>
     <Row>
       <Col md={3}>
         <h2>User Profile</h2>
@@ -122,6 +124,7 @@ const ProfileScreen = ({ location }) => {
       </Col>
      
     </Row>
+    </>
   );
 };
 

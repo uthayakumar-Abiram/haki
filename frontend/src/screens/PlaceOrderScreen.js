@@ -32,13 +32,11 @@ const PlaceOrderScreen = () => {
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   );
 
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
-
   cart.taxPrice = addDecimals(Number((0 * cart.itemsPrice).toFixed(2)));
 
   cart.totalPrice = (
     Number(cart.itemsPrice) +
-    Number(cart.shippingPrice) +
+    // Number(cart.shippingPrice) +
     Number(cart.taxPrice)
   ).toFixed(2);
 
@@ -54,28 +52,19 @@ const PlaceOrderScreen = () => {
   const placeOrderHandler = () => {
     dispatch(createOrder({
       orderItems : cart.cartItems,
-      shippingAddress: cart.shippingAddress,
       paymentMethod: cart.paymentMethod,
       itemsPrice: cart.itemsPrice,
-      shippingPrice: cart.shippingPrice,
       taxPrice: cart.taxPrice,
       totalPrice: cart.totalPrice
     }))
   };
   return (
     <>
+     <div className="space"></div>
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
-            <ListGroupItem>
-              <h2>Shipping</h2>
-              <p>
-                <strong>Address:</strong>
-                {cart.shippingAddress.address}, {cart.shippingAddress.city}{" "}
-                {cart.shippingAddress.postalCode} {cart.shippingAddress.country}
-              </p>
-            </ListGroupItem>
             <ListGroupItem>
               <h2>Payment Method</h2>
               <strong>Method:</strong>

@@ -45,6 +45,8 @@ const RegisterScreen = ({ location }) => {
     }
   };
   return (
+    <>
+    <div className="space"></div>
     <FormContainer>
       <h1>Sign Up</h1>
       {message && <Message variant="danger">{message}</Message>}
@@ -100,6 +102,7 @@ const RegisterScreen = ({ location }) => {
         </Col>
       </Row>
     </FormContainer>
+    </>
   );
 };
 

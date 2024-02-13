@@ -4,7 +4,7 @@ import dotenv from "dotenv"
 dotenv.config()
  var  EMAIL = process.env.EMAIL // your yahoo email address goes here
  var   PASSWORD=process.env.PASS // recently generated password goes here
-   var MAIN_URL= "localhost:6000/"
+ var   MAIN_URL= "localhost:6000/"
 
 let transporter = nodemailer.createTransport({
   service: "Gmail",

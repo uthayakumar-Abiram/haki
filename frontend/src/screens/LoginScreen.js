@@ -38,6 +38,8 @@ const LoginScreen = ({ location }) => {
     dispatch(login(email, password))
   };
   return (
+    <>
+    <div className="space"></div>
     <Row>
         <Col>1 of 2</Col>
     <Col className="mt-5">
@@ -83,6 +85,7 @@ const LoginScreen = ({ location }) => {
     </FormContainer>
     </Col>
     </Row>
+    </>
   );
 };
 

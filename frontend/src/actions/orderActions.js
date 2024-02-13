@@ -32,7 +32,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/users/orders`, order, config);
+    const { data } = await axios.post(`/api/order`, order, config);
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -137,7 +137,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/orders/myorders`, config);
+    const { data } = await axios.get(`/api/order/myorders`, config);
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,

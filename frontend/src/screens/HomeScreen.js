@@ -56,9 +56,10 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Banner />
-      <Carousel data-bs-theme="dark">
+    <div className="">
+      <div className="space"></div>
+       <Banner />
+      {/* <Carousel data-bs-theme="dark">
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -94,7 +95,7 @@ const HomeScreen = () => {
           </p>
         </Carousel.Caption>
       </Carousel.Item>
-    </Carousel>
+    </Carousel> */}
       <h1>Latest Games</h1>
       {loading ? (
         <Loader />
@@ -105,14 +106,14 @@ const HomeScreen = () => {
           {products &&
             products.map((product) => {
               return (
-                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
+                <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
+                  <Product product={product} className="" />
                 </Col>
               );
             })}
         </Row>
-      )}
-    </>
+      )} 
+    </div>
   );
 };
 

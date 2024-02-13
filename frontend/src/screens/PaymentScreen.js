@@ -19,14 +19,10 @@ import Message from "../components/Message";
 
 const PaymentScreen = () => {
   const cart = useSelector((state) => state.cart);
+  
   const dispatch = useDispatch();
-  const { shippingAddress } = cart;
-
   const navigate = useNavigate();
 
-  if (!shippingAddress) {
-    navigate("/shipping");
-  }
 
   const [paymentMethod, setPaymentMethod] = useState("PayPal");
 
@@ -36,6 +32,8 @@ const PaymentScreen = () => {
     navigate("/placeorder");
   };
   return (
+    <>
+     <div className="space"></div>
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
       <h1>Payment Method</h1>
@@ -52,14 +50,14 @@ const PaymentScreen = () => {
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></FormCheck>
-            {/* <FormCheck
+            {<FormCheck
               type="radio"
               label="Stripe"
               id="Stripe"
               name="paymentMethod"
               value="Stripe"
               onChange={(e) => setPaymentMethod(e.target.value)}
-            ></FormCheck> */}
+            ></FormCheck>}
           </Col>
         </FormGroup>
         <Button type="submit" variant="primary">
@@ -67,6 +65,7 @@ const PaymentScreen = () => {
         </Button>
       </Form>
     </FormContainer>
+    </>
   );
 };
 

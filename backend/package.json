@@ -27,7 +27,8 @@
     "nodemailer": "^6.9.8",
     "path": "^0.12.7",
     "sharp": "^0.33.1",
-    "slugify": "^1.6.6"
+    "slugify": "^1.6.6",
+    "stripe": "^14.14.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

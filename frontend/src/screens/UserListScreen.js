@@ -7,15 +7,13 @@ import { Link, redirect, useNavigate } from "react-router-dom";
 import { register } from "../actions/userActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { listUsers } from "../actions/userActions";
-
 const UserListScreen = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -33,6 +31,7 @@ const UserListScreen = () => {
 
   return (
     <>
+    <div className="space"></div>
       <h1>Users</h1>
       {loading ? (
         <Loader />
@@ -60,18 +59,18 @@ const UserListScreen = () => {
                   </td>
                   <td>
                     {user.role==="admin" ? (
-                      <i
-                        className="fas fa-check"
+                      
+                      <i class="bi bi-check2"
                         style={{ color: "green" }}
                       ></i>
                     ) : (
-                      <i className="fa fa-times" style={{ color: "red" }}></i>
+                      <i class="bi bi-x-lg" style={{ color: "red" }}></i>
                     )}
                   </td>
                   <td>
                     <LinkContainer to={`/user/${user._id}/edit`}>
                       <Button variant="light" className="btn-sm">
-                        <i className="fa fa-edit"></i>
+                      <i class="bi bi-pencil-square"></i>
                       </Button>
                     </LinkContainer>
                     <Button
@@ -79,7 +78,7 @@ const UserListScreen = () => {
                       className="btn-sm"
                       onClick={deleteHandler(user._id)}
                     >
-                      <i className="fa fa-trash"></i>
+                    <i class="bi bi-trash"></i>
                     </Button>
                   </td>
                 </tr>

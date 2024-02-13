@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import { Nav, NavItem, NavLink } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
+import { redirect, useNavigate } from "react-router-dom";
+
 
 const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
+    const navigate = useNavigate();
+    
+const userLogin = useSelector((state) => state.userLogin);
+const { userInfo } = userLogin;
+useEffect(() => {
+    if (!userInfo && userInfo.role === "admin") {
+        navigate("/login")
+    } 
+  });
+ 
+
   return <Nav className="justify-content-center mb-4">
     <NavItem>
-        {
+     
+       {
             step1 ? (
                 <LinkContainer to='/login'>
                     <NavLink>Sign In</NavLink>

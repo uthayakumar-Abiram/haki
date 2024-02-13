@@ -13,12 +13,14 @@ import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
+import Productlist from "./screens/Productlist";
+import "./index.css"
 
 const App = () => {
   return (
     <Router>
       <Header />
-      <main className="py-3">
+      <main className="bg-color">
         <Container>
           <Routes>
             <Route path="/orders/:id" element={<OrderScreen />} />
@@ -31,10 +33,11 @@ const App = () => {
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/cart/:id?" element={<CartScreen />} />
             <Route path="/admin/userList" element={<UserListScreen />} />
+            <Route path="/admin/productAdd" element={<Productlist />} />
             <Route path="/" element={<HomeScreen />} />
           </Routes>
         </Container>
-      </main>
+</main>
       <Footer />
     </Router>
   );

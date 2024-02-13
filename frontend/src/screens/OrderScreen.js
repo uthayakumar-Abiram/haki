@@ -78,6 +78,7 @@ const OrderScreen = () => {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
+     <div className="space1"></div>
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
@@ -94,20 +95,7 @@ const OrderScreen = () => {
                   {order.user.email}
                 </Link>
               </p>
-              <p>
-                <strong>Address:</strong>
-                {order.shippingAddress.address}, {order.shippingAddress.city}{" "}
-                {order.shippingAddress.postalCode}{" "}
-                {order.shippingAddress.country}
-              </p>
-
-              {order.isDelivered ? (
-                <Message variant="success">
-                  Delivered on {order.DeliveredAt}
-                </Message>
-              ) : (
-                <Message variant="danger">Not Delivered</Message>
-              )}
+             
             </ListGroupItem>
             <ListGroupItem>
               <h2>Payment Method</h2>
@@ -169,13 +157,7 @@ const OrderScreen = () => {
                 </Row>
               </ListGroupItem>
 
-              <ListGroupItem>
-                <Row>
-                  <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
-                </Row>
-              </ListGroupItem>
-
+             
               <ListGroupItem>
                 <Row>
                   <Col>Tax</Col>
