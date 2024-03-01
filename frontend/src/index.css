@@ -170,11 +170,14 @@
   .h1 {
     color: var(--white);
     font-family: var(--ff-refault);
-    font-size: var(--fs-1);
+    font-size: 55px;
     font-weight: var(--fw-400);
     text-transform: uppercase;
   }
-  
+  .vithu{
+    height: 50px;
+    width: 200px;
+  }
   .h2 {
     font-size: var(--fs-2);
     color: var(--white);
@@ -189,7 +192,9 @@
     text-transform: uppercase;
     line-height: 1.2;
   }
-  
+  .gta {
+    background-color: var( --raisin-black-2);
+  }
   .btn {
     color: var(--white);
     font-family: var(--ff-oswald);
@@ -397,7 +402,9 @@
     margin-bottom: 15px;
   }
   
-  .hero-title { margin-bottom: 10px; }
+  .hero-title { margin-bottom: 10px;
+  font-size: 60px;
+  }
   
   .btn-group {
     display: flex;
@@ -1778,10 +1785,53 @@
   
   }
 .space{
-  height: 150px;
+  height: 200px;
 }
 
-main{height: 100vh;
 
-  background: 
+.hero {
+  background: url("../public/images/wallpaperflare.com_wallpaper\ \(2\).jpg") no-repeat;
+  background-size: cover;
+  background-position: top center;
+  margin-top: 90px;
+  padding: var(--section-padding) 0;
+  height: 100vh;
+  max-height: 1000px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+
+.hero-subtitle {
+  color: var(--white);
+  font-family: var(--ff-oswald);
+  font-size: 40px;
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  text-shadow: 0 7px hsla(0, 0%, 0%, 0.4);
+  margin-bottom: 15px;
+}
+
+.hero-title { margin-bottom: 10px; }
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero .btn-primary ion-icon { font-size: 25px; }
+
+
+
+main{height: 80vh;
+
+  /* background-color: rgb(145, 143, 143);   */
+}
+/* .whaite{
+  color: aliceblue;
+} */

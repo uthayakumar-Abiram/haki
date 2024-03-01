@@ -7,7 +7,9 @@ import {
   FormGroup,
   FormLabel,
   FormControl,
+  Container,
 } from "react-bootstrap";
+import '../index.css'
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import { Link, redirect, useNavigate } from "react-router-dom";
@@ -38,10 +40,11 @@ const LoginScreen = ({ location }) => {
     dispatch(login(email, password))
   };
   return (
-    <>
+    <main>
+    <Container>
     <div className="space"></div>
     <Row>
-        <Col>1 of 2</Col>
+        <Col> </Col>
     <Col className="mt-5">
     <FormContainer>
       <h1>Sign In</h1>
@@ -85,7 +88,8 @@ const LoginScreen = ({ location }) => {
     </FormContainer>
     </Col>
     </Row>
-    </>
+    </Container>
+    </main>
   );
 };
 

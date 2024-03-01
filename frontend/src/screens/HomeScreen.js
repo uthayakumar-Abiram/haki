@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row,Container } from "react-bootstrap";
 import Product from "../components/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
@@ -56,8 +56,9 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   return (
-    <div className="">
-      <div className="space"></div>
+    <>
+    
+      {/* <div className="space"></div> */}
        <Banner />
       {/* <Carousel data-bs-theme="dark">
       <Carousel.Item>
@@ -96,7 +97,34 @@ const HomeScreen = () => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel> */}
-      <h1>Latest Games</h1>
+
+<section className="hero" id="hero">
+        <div className="container">
+
+          <p className="hero-subtitle" >The wait is over</p>
+
+          <h1 className="h1">GTA VI</h1>
+
+          <div className="btn-group">
+
+            <button className="btn btn-danger vithu">
+              <span>Download Now</span>
+
+              <ion-icon name="play-circle"></ion-icon>
+            </button>
+
+            <button style={{textDecoration:"none",fontSize:"30px",color:"white", padding:"5px"}}>Dream making</button>
+
+          </div>
+
+        </div>
+      </section>
+      <div className="gta">
+        <br></br>
+        <br></br>
+        <br></br>
+ <Container >
+      <h1 style={{color:"white"}}>Latest Games</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -106,14 +134,17 @@ const HomeScreen = () => {
           {products &&
             products.map((product) => {
               return (
-                <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
-                  <Product product={product} className="" />
+                <Col key={product._id} sm={12} md={6} lg={4} xl={3}  >
+                  <Product product={product}  />
                 </Col>
               );
             })}
         </Row>
-      )} 
-    </div>
+
+      )}
+      </Container> 
+      </div>
+    </>
   );
 };
 

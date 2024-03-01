@@ -16,15 +16,10 @@ import {
   FormGroup,
   FormLabel,
   FormControl,
+  Container
 } from "react-bootstrap";
 import { productsAdd} from "../actions/productActions";
 const Productlist = () => {
-
-
-    const [title, setTitle] = useState("");
-    const [price, setPrice] = useState("");
-    const [images, setImage] = useState("");
-    const [ requirement, setRequirement] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,9 +28,13 @@ const Productlist = () => {
   const { loading, error, product } = products;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
   
-
+  const [ title, setTitle] = useState("");
+  const [ price, setPrice] = useState("");
+  const [ requirement, setRequirement] = useState("");
+  const [ images, setImage] = useState(null);
+  const [ description ,setdescription]=useState("")
+  console.log(title)
   useEffect(() => {
     if (userInfo && userInfo.role === "admin") {
       dispatch(productsAdd());
@@ -44,25 +43,23 @@ const Productlist = () => {
     }
   }, [dispatch]);
 
-//   const LoginScreen = ({ location }) => {
-    //     const [email, setEmail] = useState("");
-    //     const [password, setPassword] = useState("");
-  
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
-  
-    //   const redirect = location.search ? location.search.split("=")[1] : "/";
-  
     const submitHandler = (e) => {
       e.preventDefault();
-      dispatch(productsAdd(title, price,images,requirement))
+
+      const formData = new FormData();
+
+      formData.set("title", title);
+      formData.set("price", price);
+      formData.set("requirement", requirement);
+      formData.set("images", images);
+      formData.set("description",description)
+ 
+      dispatch(productsAdd(formData))
     };
-//   const deleteHandler = (id) => {
-//     console.log("delete");
-//   };
 
   return (
-    <>
+    <main>
+    <Container>
      <div className="space"></div>
       
     <FormContainer>
@@ -80,34 +77,50 @@ const Productlist = () => {
             type="text"
             placeholder="Enter Title"
             value={title}
+            name="title"
             onChange={(e) => setTitle(e.target.value)}
           ></FormControl>
         </FormGroup>
         <FormGroup controlId="Price">
           <FormLabel>Price</FormLabel>
           <FormControl
-            type="text"
+            type="number"
             placeholder="Enter Price"
             value={price}
+            name="price"
             onChange={(e) => setPrice(e.target.value)}
           ></FormControl>
         </FormGroup>
-        <FormGroup controlId="Requirement">
+        <FormGroup controlId="Requirem
+        ent">
           <FormLabel>Requirement</FormLabel>
           <FormControl
             type="text"
             placeholder="Enter The Requirement"
             value={requirement}
+            name="requirement"
             onChange={(e) => setRequirement(e.target.value)}
           ></FormControl>
         </FormGroup>
-        <FormGroup controlId="image">
+
+        <FormGroup controlId="description">
+          <FormLabel>description</FormLabel>
+          <FormControl
+            type="text"
+            placeholder="Enter The Requirement"
+            value={description}
+            name="description"
+            onChange={(e) => setdescription(e.target.value)}
+          ></FormControl>
+        </FormGroup>
+
+        <FormGroup controlId="images">
           <FormLabel>Password</FormLabel>
           <FormControl
             type="file"
             placeholder="Add image"
-            value={images}
-            onChange={(e) => setImage(e.target.value)}
+            name="images"
+            onChange={(e) => setImage(e.target.files[0])}
           ></FormControl>
         </FormGroup>
         <Button type="submit" variant="primary">
@@ -116,8 +129,8 @@ const Productlist = () => {
       </Form>
      
     </FormContainer>
-   
-    </>
+    </Container>
+    </main>
   
   );
 };

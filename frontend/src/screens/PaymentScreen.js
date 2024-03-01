@@ -7,6 +7,7 @@ import {
   FormControl,
   FormCheck,
   Col,
+  Container
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, redirect, useNavigate } from "react-router-dom";
@@ -32,7 +33,8 @@ const PaymentScreen = () => {
     navigate("/placeorder");
   };
   return (
-    <>
+    <main>
+<Container>
      <div className="space"></div>
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
@@ -65,7 +67,8 @@ const PaymentScreen = () => {
         </Button>
       </Form>
     </FormContainer>
-    </>
+    </Container>
+    </main>
   );
 };
 

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import ims from"./HAKI-3.png"
 import background from "./assets/images/footer-bg.jpg"
 const Footer = () => {
   return (
@@ -11,36 +13,36 @@ const Footer = () => {
 
     <div class="footer-brand-wrapper">
 
-      <a href="#" class="logo">
-        <img src="./assets/images/logo.svg" alt="GameX logo"/>
-      </a>
+      <Link to="/home" class="logo">
+        <img src={ims} alt="haki" style={{ height:"200px",width:"auto"}}/>
+      </Link>
 
       <div class="footer-menu-wrapper">
 
-        <ul class="footer-menu-list">
+        <ul class="footer-menu-list" >
 
           <li>
-            <a href="#hero" class="footer-menu-link">Home</a>
+            <a href="#hero" class="footer-menu-link" style={{textDecoration:"none"}}>Home</a>
           </li>
 
           <li>
-            <a href="#about" class="footer-menu-link">About</a>
+            <a href="#about" class="footer-menu-link"style={{textDecoration:"none"}}>About</a>
           </li>
 
           <li>
-            <a href="#tournament" class="footer-menu-link">Tournament</a>
+            <a href="#tournament" class="footer-menu-link"style={{textDecoration:"none"}}>Action</a>
           </li>
 
           <li>
-            <a href="#team" class="footer-menu-link">Team</a>
+            <a href="#team" class="footer-menu-link"style={{textDecoration:"none"}}>Action</a>
           </li>
 
           <li>
-            <a href="#gears" class="footer-menu-link">Gears</a>
+            <a href="#gears" class="footer-menu-link" style={{textDecoration:"none"}}>Action</a>
           </li>
 
           <li>
-            <a href="#" class="footer-menu-link">Contact</a>
+            <a href="#" class="footer-menu-link" style={{textDecoration:"none"}}>Contact</a>
           </li>
 
         </ul>
@@ -62,19 +64,19 @@ const Footer = () => {
       <ul class="quicklink-list">
 
         <li>
-          <a href="#" class="quicklink-item">Faq</a>
+          <a href="#" class="quicklink-item" style={{textDecoration:"none"}}>Faq</a>
         </li>
 
         <li>
-          <a href="#" class="quicklink-item">Help center</a>
+          <a href="#" class="quicklink-item" style={{textDecoration:"none"}}>Help center</a>
         </li>
 
         <li>
-          <a href="#" class="quicklink-item">Terms of use</a>
+          <a href="#" class="quicklink-item"style={{textDecoration:"none"}}>Terms of use</a>
         </li>
 
         <li>
-          <a href="#" class="quicklink-item">Privacy</a>
+          <a href="#" class="quicklink-item"style={{textDecoration:"none"}}>Privacy</a>
         </li>
 
       </ul>
@@ -82,25 +84,25 @@ const Footer = () => {
       <ul class="footer-social-list">
 
         <li>
-          <a href="#" class="footer-social-link">
+          <a href="#" class="footer-social-link"style={{textDecoration:"none"}}>
             <ion-icon name="logo-discord"></ion-icon>
           </a>
         </li>
 
         <li>
-          <a href="#" class="footer-social-link">
+          <a href="#" class="footer-social-link"style={{textDecoration:"none"}}>
             <ion-icon name="logo-twitch"></ion-icon>
           </a>
         </li>
 
         <li>
-          <a href="#" class="footer-social-link">
+          <a href="#" class="footer-social-link"style={{textDecoration:"none"}}>
             <ion-icon name="logo-xbox"></ion-icon>
           </a>
         </li>
 
         <li>
-          <a href="#" class="footer-social-link">
+          <a href="#" class="footer-social-link"style={{textDecoration:"none"}}>
             <ion-icon name="logo-youtube"></ion-icon>
           </a>
         </li>
@@ -115,7 +117,7 @@ const Footer = () => {
 <div class="footer-bottom">
   <div class="container">
     <p class="copyright">
-      {/* Copyright &copy; 2022 <a href="#">codewithsadee</a>. all rights reserved */}
+      Copyright &copy; 2024 <a href="#">Haki</a>. all rights reserved
     </p>
 
     <figure class="footer-bottom-img">

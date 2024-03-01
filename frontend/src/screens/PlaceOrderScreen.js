@@ -7,10 +7,11 @@ import {
   Image,
   Card,
   ListGroupItem,
+  Container
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, redirect, useNavigate } from "react-router-dom";
-import { saveShippingAddress } from "../actions/cartActions";
+// import { saveShippingAddress } from "../actions/cartActions";
 import { createOrder } from "../actions/orderActions";
 import { register } from "../actions/userActions";
 import CheckoutSteps from "../components/CheckoutSteps";
@@ -36,7 +37,7 @@ const PlaceOrderScreen = () => {
 
   cart.totalPrice = (
     Number(cart.itemsPrice) +
-    // Number(cart.shippingPrice) +
+  
     Number(cart.taxPrice)
   ).toFixed(2);
 
@@ -59,7 +60,8 @@ const PlaceOrderScreen = () => {
     }))
   };
   return (
-    <>
+    <main>
+    <Container>
      <div className="space"></div>
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
@@ -82,19 +84,21 @@ const PlaceOrderScreen = () => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
-                            alt={item.name}
-                            fluid
+                            src={item.images?.[0]?.url}
+                            alt={item.tilte}
+                          //   style={{height:"100px",
+                          // width:"100px"}}
                             rounded
+                            fluid
                           />
                         </Col>
                         <Col>
-                          <Link to={`/product/${item.product}`}>
-                            {item.name}
+                          <Link to={`/product/${item.product}`} style={{textDecoration:"none"}}>
+                            {item.title}
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.price}
                         </Col>
                       </Row>
                     </ListGroupItem>
@@ -157,7 +161,9 @@ const PlaceOrderScreen = () => {
           </Card>
         </Col>
       </Row>
-    </>
+      </Container>
+    </main>
+    
   );
 };
 

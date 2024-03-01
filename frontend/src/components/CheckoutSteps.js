@@ -11,7 +11,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
 const userLogin = useSelector((state) => state.userLogin);
 const { userInfo } = userLogin;
 useEffect(() => {
-    if (!userInfo && userInfo.role === "admin") {
+    if (!userInfo) {
         navigate("/login")
     } 
   });

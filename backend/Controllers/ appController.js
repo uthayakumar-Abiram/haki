@@ -1,3 +1,4 @@
+//top
 import nodemailer from"nodemailer";
 import Mailgen from"mailgen";
 import dotenv from "dotenv"
@@ -5,6 +6,8 @@ dotenv.config()
  var  EMAIL = process.env.EMAIL // your yahoo email address goes here
  var   PASSWORD=process.env.PASS // recently generated password goes here
  var   MAIN_URL= "localhost:6000/"
+
+
 
 let transporter = nodemailer.createTransport({
   service: "Gmail",
@@ -15,6 +18,8 @@ let transporter = nodemailer.createTransport({
   },
 });
 
+
+
 let MailGenerator = new Mailgen({
   theme: "default",
   product: {
@@ -23,9 +28,12 @@ let MailGenerator = new Mailgen({
   },
 });
 
+
+
 const getBill = (req, res) => {
   const { name, email } = req.body;
-   
+  
+  //login contro
   let response = {
     body: {
       name,

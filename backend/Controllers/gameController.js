@@ -13,6 +13,7 @@ const createProduct = asyncHandler(async (req, res) => {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);  
     }
+    
     const uploader = (path) => cloudinaryUploadImg(path);
     const urls = [];
     const files = req.files;
@@ -23,12 +24,12 @@ const createProduct = asyncHandler(async (req, res) => {
       urls.push(newpath);
       fs.unlinkSync(path);
     }
-    const {price,title,requirement,category,totalrating,ratings,slug} = req.body;
+    const {price,title,requirement,description,category,totalrating,ratings,slug} = req.body;
     const images = urls.map((file) => {
       return file;
 
     });
-    const newProduct = await Product.create({slug,price,title,requirement,category,totalrating,ratings,images});
+    const newProduct = await Product.create({slug,price,title,requirement,category,totalrating,description,ratings,images});
     res.json(newProduct);
   } catch (error) {
     throw new Error(error);

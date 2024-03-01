@@ -11,7 +11,6 @@ var productSchema = new mongoose.Schema(
     slug: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
     },
     requirement: {
@@ -31,8 +30,6 @@ var productSchema = new mongoose.Schema(
         url: String,
       },
     ],
-    color: [],
-    tags: String,
     ratings: [
       {
         star: {type:Number},
@@ -45,6 +42,9 @@ var productSchema = new mongoose.Schema(
       default: 0,
     },
    
+    description:{
+      type: String
+    }
   },
   { timestamps: true }
 );

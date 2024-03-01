@@ -9,6 +9,7 @@ import {
   Button,
   ListGroupItem,
   FormControl,
+  Container
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,7 +35,8 @@ const ProductScreen = () => {
   };
 
   return (
-    <>
+    <main>
+    <Container>
     <div className="space"></div>
       <Link className="btn btn-dark my-3" to="/" variant="danger">
         {" "}
@@ -59,11 +61,11 @@ const ProductScreen = () => {
               <ListGroupItem>
                 <Rating
                   value={product.rating}
-                  text={`${product.numReviews} reviews`}
+                  text={`${product.totalrating} reviews`}
                 />
               </ListGroupItem>
-              <ListGroupItem>Price: ${product.price}</ListGroupItem>
-              <ListGroupItem>Description: ${product.description}</ListGroupItem>
+              <ListGroupItem>Price: RS {product.price}</ListGroupItem>
+              <ListGroupItem>Description: {product.description}</ListGroupItem>
             </ListGroup>
           </Col>
           <Col md={3}>
@@ -77,33 +79,7 @@ const ProductScreen = () => {
                     </Col>
                   </Row>
                 </ListGroupItem>
-                <ListGroupItem>
-                  <Row>
-                    <Col>Stock:</Col>
-                    <Col>
-                      {product.countInStock > 0 ? "In Stock" : "Out Of Stock"}
-                    </Col>
-                  </Row>
-                </ListGroupItem>
-
-                {product.countInStock > 0 && (
-                  <ListGroupItem>
-                    <Row>
-                      <Col>Qty</Col>
-                      <Col>
-                        <FormControl
-                          as="select"
-                          value={qty}
-                          onChange={(e) => setQty(e.target.value)}
-                        >
-                          {[...Array(product.countInStock).keys()].map((x) => (
-                            <option key={x + 1}>{x + 1}</option>
-                          ))}
-                        </FormControl>
-                      </Col>
-                    </Row>
-                  </ListGroupItem>
-                )}
+              
                 <ListGroupItem>
                   <Button
                     onClick={addToCartHandler}
@@ -119,7 +95,8 @@ const ProductScreen = () => {
           </Col>
         </Row>
       )}
-    </>
+      </Container>
+    </main>
   );
 };
 

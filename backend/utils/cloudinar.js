@@ -19,7 +19,9 @@ const cloudinaryUploadImg = async (fileToUploads) => {
         {
           resource_type: "auto",
         }
-      );
+        
+      );    
+
     });
   });
 };

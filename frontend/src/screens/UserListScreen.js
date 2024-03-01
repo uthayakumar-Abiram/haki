@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button ,Container} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
@@ -28,9 +28,13 @@ const UserListScreen = () => {
   const deleteHandler = (id) => {
     console.log("delete");
   };
+  const updateRole = (id) => {
+    console.log("admin");
+  };
 
   return (
-    <>
+    <main>
+    <Container>
     <div className="space"></div>
       <h1>Users</h1>
       {loading ? (
@@ -69,7 +73,7 @@ const UserListScreen = () => {
                   </td>
                   <td>
                     <LinkContainer to={`/user/${user._id}/edit`}>
-                      <Button variant="light" className="btn-sm">
+                      <Button variant="light" className="btn-sm"  onClick={updateRole(user._id)}>
                       <i class="bi bi-pencil-square"></i>
                       </Button>
                     </LinkContainer>
@@ -85,8 +89,10 @@ const UserListScreen = () => {
               ))}
           </tbody>
         </Table>
+
       )}
-    </>
+      </Container>
+    </main>
   );
 };
 

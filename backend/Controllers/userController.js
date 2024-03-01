@@ -31,6 +31,42 @@ else{
 // des Auth user/set token
 // route POST /api/users/admin-login
 // access admin
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+  let user = null;
+  try {
+      const careneeder = await User.findOne({ email });
+      const caretaker = await Caretaker.findOne({ email });
+      
+      if (careneeder) {
+          user = careneeder;
+      } else if (caretaker) {
+          user = caretaker;
+      }
+      
+      // check if user exist or not
+      if (!user) {
+          return res.status(404).json({ message: "User not found" });
+      }
+      
+      if (user && (await user.matchPassword(password))) {
+          generateToken(res, user);
+          const token=generateToken(user);
+          const {password,role,appoinment, ...rest}= user._doc;
+          // Assuming token, data, and role are defined somewhere
+          res.status(201).json({
+              status: true,
+              message: "Successfully login",
+             
+          });
+      } else {
+          return res.status(401).json({ status: false, message: "Invalid credentials" });
+      }
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ status: false, message: "Failed to login" });
+  }
+};
      const loginAdmin = asynchandler(async (req, res) => {
       const {email,password}=req.body
       const user = await User.findOne({email});
@@ -117,7 +153,7 @@ const logoutUser = asynchandler(async(req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            isAdmin: user.isAdmi
+            isAdmin: user.isAdmin
           });
         } else {
           res.status(401);

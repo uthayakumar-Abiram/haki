@@ -48,28 +48,29 @@ export const listProductsDetails = (id) => async (dispatch) => {
   }
 };
 
-export const productsAdd = (title, price, images ,requirement) => async (dispatch) => {
+export const productsAdd = (formData ) => async (dispatch) => {
   try {
     dispatch({
       type: PRODUCT_ADD_REQUEST,
     });
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": 'multipart/form-data',
       },
     };
+    console.log(formData.value);
     const { data } = await axios.post(
       "/api/product/",
-      { title, price, images,requirement },
+       formData,
       config
     );
-
+      
     dispatch({
       type: PRODUCT_ADD_SUCCESS,
       payload: data,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+   
   } catch (error) {
     dispatch({
       type: PRODUCT_ADD_FAIL,

@@ -8,23 +8,24 @@ import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
 import Productlist from "./screens/Productlist";
+import CheckoutSuccess from"./screens/checkoutSuccess"
+import  NotFound from "./screens/notfound"
+
 import "./index.css"
 
 const App = () => {
   return (
     <Router>
       <Header />
-      <main className="bg-color">
-        <Container>
+   
+  
           <Routes>
             <Route path="/orders/:id" element={<OrderScreen />} />
-            <Route path="/shipping" element={<ShippingScreen />} />
             <Route path="/payment" element={<PaymentScreen />} />
             <Route path="/placeorder" element={<PlaceOrderScreen />} />
             <Route path="/login" element={<LoginScreen />} />
@@ -35,9 +36,11 @@ const App = () => {
             <Route path="/admin/userList" element={<UserListScreen />} />
             <Route path="/admin/productAdd" element={<Productlist />} />
             <Route path="/" element={<HomeScreen />} />
+            <Route  path="/CheckoutSuccess" element={<CheckoutSuccess />}/>
+            <Route path="*" element={<NotFound/>}/>
           </Routes>
-        </Container>
-</main>
+        
+
       <Footer />
     </Router>
   );

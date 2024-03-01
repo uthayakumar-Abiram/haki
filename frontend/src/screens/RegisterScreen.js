@@ -7,6 +7,7 @@ import {
   FormGroup,
   FormLabel,
   FormControl,
+  Container
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
@@ -45,7 +46,8 @@ const RegisterScreen = ({ location }) => {
     }
   };
   return (
-    <>
+    <main>
+    <Container>
     <div className="space"></div>
     <FormContainer>
       <h1>Sign Up</h1>
@@ -102,7 +104,8 @@ const RegisterScreen = ({ location }) => {
         </Col>
       </Row>
     </FormContainer>
-    </>
+    </Container>
+    </main>
   );
 };
 

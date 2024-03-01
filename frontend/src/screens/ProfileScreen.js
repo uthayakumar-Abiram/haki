@@ -7,7 +7,8 @@ import {
   FormGroup,
   FormLabel,
   FormControl,
-  Table
+  Table,
+  Container
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap"
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +18,7 @@ import {
   getUserDetails,
   updateUserProfile,
 } from "../actions/userActions";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
@@ -69,9 +71,10 @@ const ProfileScreen = ({ location }) => {
     }
   };
   return (
-    <>
+    <main>
+    <Container>
      <div className="space"></div>
-    <Row>
+    <Row > 
       <Col md={3}>
         <h2>User Profile</h2>
         {message && <Message variant="danger">{message}</Message>}
@@ -122,9 +125,54 @@ const ProfileScreen = ({ location }) => {
           </Button>
         </Form>
       </Col>
-     
+      <Col md={9}>
+        <h2>My Orders</h2>
+        {loadingOrders ? (
+          <Loader />
+        ) : errorOrders ? (
+          <Message variant="danger">{errorOrders}</Message>
+        ) : (
+          <Table striped bordered hover responsive className="table-sm">
+            <thead>
+              <th>ID</th>
+              <th>DATE</th>
+              <th>TOTAL</th>
+              <th>PAID</th>
+
+  
+              <th>Downlord</th>
+            </thead>
+            <tbody>
+              
+              {orders && orders.map((order) => (
+                <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{order.createdAt.substring(0, 10)}</td>
+                  <td>{order.totalPrice}</td>
+                  <td>
+                    {order.isPaid ? (
+                      order.paidAt.substring(0, 10)
+                    ) : (
+                      <i class="bi bi-x-lg" style={{ color: "red" }}></i>
+                    )}
+                  </td>
+                  {!order.isPaid && (
+                    <td>
+                    <LinkContainer to={`/order/${order._id}`}>
+                      <Button className="btn-sm" variant="light">Downlord</Button>
+                    </LinkContainer>
+                  </td>
+ )}
+                  
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </Col>
     </Row>
-    </>
+    </Container>
+    </main>
   );
 };
 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 
 import {
+  Container,
   Row,
   Col,
   ListGroup,
@@ -45,10 +46,12 @@ const CartScreen = () => {
 
   return (
     <>
+     <main>
+    <Container>
     <div className="space"></div>
     <Row>
       <Col md={8}>
-        <h1>Shoping Cart</h1>
+        <h1>Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to="/">GO Back</Link>{" "}
@@ -66,7 +69,7 @@ const CartScreen = () => {
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>
-                    <FormControl
+                    {/* <FormControl
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
@@ -78,7 +81,7 @@ const CartScreen = () => {
                       {[...Array(item.countInStock).keys()].map((x) => (
                         <option key={x + 1}>{x + 1}</option>
                       ))}
-                    </FormControl>
+                    </FormControl> */}
                   </Col>
                   <Col md={2}>
                     <Button
@@ -87,7 +90,7 @@ const CartScreen = () => {
                       onClick={() => removeFromCartHandler(item.product)}
                     >
                       <i className="fas fa-trash" />
-                      <button> del</button>
+                      <button variant="alert"> Remove</button>
                     </Button>
                   </Col>
                 </Row>
@@ -116,6 +119,8 @@ const CartScreen = () => {
         </Card>
       </Col>
     </Row>
+    </Container>
+   </main>
     </>
   );
 };
