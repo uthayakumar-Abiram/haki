@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "http://localhost:6000",
+  "proxy": "http://localhost:5500",
   "private": true,
   "dependencies": {
     "@stripe/react-stripe-js": "^1.11.0",

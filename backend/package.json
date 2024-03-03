@@ -7,7 +7,8 @@
   "scripts": {
     "start": "nodemon index.js",
     "server": "nodemon backend/index.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "prod": "set NODE_ENV=production&&nodemon backend/index.js"
   },
   "keywords": [],
   "author": "",
