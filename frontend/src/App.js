@@ -14,17 +14,17 @@ import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
 import Productlist from "./screens/Productlist";
 import CheckoutSuccess from"./screens/checkoutSuccess"
-import  NotFound from "./screens/notfound"
-import BookingPage from "./screens/edit.js";
+import  NotFound from "./screens/404/notfound"
+
 
 import "./index.css"
 
 const App = () => {
   return (
     <Router>
-      <Header />
+     
    
-  
+     <Header />
           <Routes>
             <Route path="/orders/:id" element={<OrderScreen />} />
             <Route path="/payment" element={<PaymentScreen />} />
@@ -39,7 +39,7 @@ const App = () => {
             <Route path="/" element={<HomeScreen />} />
             <Route  path="/CheckoutSuccess" element={<CheckoutSuccess />}/>
             <Route path="*" element={<NotFound/>}/>
-            <Route path="/hi"element={<BookingPage/>}/>
+           
           </Routes>
         
 

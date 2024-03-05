@@ -25,9 +25,7 @@ const CartScreen = () => {
   const qty = queryParams.get("qty") ?? 1;
 
   const dispatch = useDispatch();
-
   const cart = useSelector((state) => state.cart);
-
   const { cartItems } = cart;
 
   useEffect(() => {
