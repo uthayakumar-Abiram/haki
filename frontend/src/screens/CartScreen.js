@@ -39,7 +39,7 @@ const CartScreen = () => {
   }
 
   const checkoutHandler = () => {
-    navigate('/Payment')
+    navigate('/placeorder')
   }
 
   return (
@@ -65,7 +65,7 @@ const CartScreen = () => {
                   <Col md={2}>
                     <Link to={`/product/${item.product}`}>{item.title}</Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
+                  <Col md={2}>Rs {item.price}</Col>
                   <Col md={2}>
                     {/* <FormControl
                       as="select"
@@ -106,7 +106,7 @@ const CartScreen = () => {
                 {cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
                 items
               </h2>
-              ${cartItems.reduce((acc, item) => acc + Number(item.qty) * item.price, 0)}
+              Rs {cartItems.reduce((acc, item) => acc + Number(item.qty) * item.price, 0)}
             </ListGroupItem>
             <ListGroupItem>
               <Button type="button" className="btn-block" disabled={cartItems.length === 0} onClick={checkoutHandler}>
