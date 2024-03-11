@@ -144,7 +144,7 @@ const OrderScreen = () => {
               <ListGroupItem>
                 <Row>
               
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>Rs{order.itemsPrice}</Col>
                 </Row>
               </ListGroupItem>
 
@@ -152,18 +152,18 @@ const OrderScreen = () => {
               <ListGroupItem>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${order.taxPrice}</Col>
+                  <Col>Rs{order.taxPrice}</Col>
                 </Row>
               </ListGroupItem>
 
               <ListGroupItem>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>Rs{order.totalPrice}</Col>
                 </Row>
               </ListGroupItem>
              
-             <PayButton orderItems ={order.orderItems[0]}/>
+             <PayButton orderItems ={order.orderItems}/>
                     
         
             </ListGroup>

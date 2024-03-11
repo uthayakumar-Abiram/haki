@@ -115,7 +115,7 @@ const Productlist = () => {
         </FormGroup>
 
         <FormGroup controlId="images">
-          <FormLabel>Password</FormLabel>
+          <FormLabel>Image</FormLabel>
           <FormControl
             type="file"
             placeholder="Add image"

@@ -23,7 +23,7 @@ const UserListScreen = () => {
     } else {
       navigate("/login");
     }
-  }, [dispatch]);
+  }, []);
 
   const deleteHandler = (id) => {
     console.log("delete");

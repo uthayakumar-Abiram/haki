@@ -150,20 +150,21 @@ const ProfileScreen = ({ location }) => {
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice}</td>
                   <td>
-                    {order.isPaid ? (
+                    {/* {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
                       <i class="bi bi-x-lg" style={{ color: "red" }}></i>
-                    )}
+                    )} */}
+
+<i class="bi bi-x-lg" style={{ color: "red" }}></i>
                   </td>
-                  {!order.isPaid && (
+                  {order.isPaid && (
                     <td>
                     <LinkContainer to={`/order/${order._id}`}>
                       <Button className="btn-sm" variant="light">Downlord</Button>
                     </LinkContainer>
                   </td>
- )}
-                  
+ )}                  
                 </tr>
               ))}
             </tbody>

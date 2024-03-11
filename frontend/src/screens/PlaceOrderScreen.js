@@ -30,10 +30,10 @@ const PlaceOrderScreen = () => {
   };
 
   cart.itemsPrice = addDecimals(
-    cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+    cart.cartItems.reduce((acc, item) => acc + item.price , 0)
   );
 
-  cart.taxPrice = addDecimals(Number((0 * cart.itemsPrice).toFixed(2)));
+  cart.taxPrice = addDecimals(Number((0.12 * cart.itemsPrice).toFixed(2)));
 
   cart.totalPrice = (
     Number(cart.itemsPrice) +
@@ -118,28 +118,23 @@ const PlaceOrderScreen = () => {
               <ListGroupItem>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>Rs{cart.itemsPrice}</Col>
                 </Row>
               </ListGroupItem>
 
-              {/* <ListGroupItem>
-                <Row>
-                  <Col>Shipping</Col>
-                  <Col>${cart.shippingPrice}</Col>
-                </Row>
-              </ListGroupItem> */}
+            
 
               <ListGroupItem>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>Rs{cart.taxPrice}</Col>
                 </Row>
               </ListGroupItem>
 
               <ListGroupItem>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>Rs{cart.totalPrice}</Col>
                 </Row>
               </ListGroupItem>
 

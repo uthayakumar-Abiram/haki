@@ -7,11 +7,11 @@ const PayButton = ({ orderItems }) => {
   const user = useSelector((state) => state.auth);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
   const handleCheckout = () => {
-    console.log(orderItems)
+    console.log({orderItems})
     axios .post(`/api/pay/checkout`, {
-        orderItems,
-           
+        orderItems,userInfo   
       })
       .then((response) => {
         if (response.data.url) {
