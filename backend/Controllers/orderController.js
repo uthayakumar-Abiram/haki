@@ -88,6 +88,15 @@ const getMyOrders = asyncHandler(async (req, res) => {
 
 });
 
+const getOrders = asyncHandler(async (req, res) => {
+  try {
+    // Fetch all orders from the database
+    const orders = await Order.find({});
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders };
+export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders ,getOrders};

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row,Container } from "react-bootstrap";
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import Product from "../components/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
@@ -13,6 +13,9 @@ import { Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Link } from 'react-router-dom';
+// import video from '../game.mp4';
+// import t3d from '../assets/img/t3d.png';
 import Carousel from 'react-bootstrap/Carousel';
 
 // import "./style.css";
@@ -28,6 +31,7 @@ const Banner = () => {
       className="mySwiper"
       loop={true}
       speed={300}
+      
       autoplay={{
         delay: 2500,
         disableOnInteraction: false,
@@ -57,53 +61,13 @@ const HomeScreen = () => {
 
   return (
     <>
-    
-      {/* <div className="space"></div> */}
-       <Banner />
-      {/* <Carousel data-bs-theme="dark">
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={""}
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=eee"
-          alt="Second slide"
-        />
-        <Carousel.Caption>
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=e5e5e5"
-          alt="Third slide"
-        />
-        <Carousel.Caption>
-          <h5>Third slide label</h5>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel> */}
-
+       
 <section className="hero" id="hero">
         <div className="container">
 
           <p className="hero-subtitle" >The wait is over</p>
 
-          <h1 className="h1">GTA VI</h1>
+          <h1 className="h1">Haki</h1>
 
           <div className="btn-group">
 
@@ -143,7 +107,39 @@ const HomeScreen = () => {
 
       )}
       </Container> 
+      
       </div>
+    
+       <section  style={{ backgroundColor: 'hsl(234, 13%, 13%)', color: 'white' }}>
+       
+    <Container>
+      <Row>
+        <Col>  
+        {/* <video  loop muted autoPlay style={{margintop:"80px" 
+      ,width:"600px",height:"600px"}}>
+                 <source  src ={video}/> 
+        </video> */}
+        </Col>
+        <Col style={{marginTop:"50px"}}><h1 className='text-center text-3xl sm:text-2xl md:text-7xl font-bold'> our current work in  <span className='text-center text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500'>
+          Haki</span>
+              </h1>
+              <ul  className='text-start text-3xl sm:text-2xl md:text-7xl font-bold' style={{fontSize:"20px"}}> 
+                <li>
+                  we   are a team of passionate game developers and design
+                </li>
+                <li>
+                  
+                </li>
+              </ul>
+                </Col>
+            
+      </Row>
+     
+    </Container>
+
+
+      </section>
+    
     </>
   );
 };

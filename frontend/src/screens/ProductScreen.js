@@ -50,7 +50,7 @@ const ProductScreen = () => {
         <Row>
           <Col md={6}>
           {product && product.images && product.images[0] && (
-           <Image src={product.images[0]?.url} alt={product.name} fluid />)}
+           <Image src={product.images[0]?.url} alt={product.name} fluid  style={{ height:"288px"}} />)}
            
           </Col>
           <Col md={3}>

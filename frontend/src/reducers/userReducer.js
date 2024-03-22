@@ -18,6 +18,10 @@ import {
   USER_UPDATE_PROFILE_REQUEST,
   USER_UPDATE_PROFILE_RESET,
   USER_UPDATE_PROFILE_SUCCESS,
+  UPDATE_ROLE_REQUEST,
+  UPDATE_ROLE_SUCCESS,
+  UPDATE_ROLE_FAIL,
+  UPDATE_ROLE_RESET,
 } from "../constants/userConstants";
 
 export const userLoginReducer = (state = { user: {} }, action) => {
@@ -85,11 +89,11 @@ export const userUpdateProfileReducer = (state = {}, action) => {
     case USER_UPDATE_PROFILE_SUCCESS: {
       return { loading: false, success: true, userInfo: action.payload };
     }
-    case USER_UPDATE_PROFILE_FAIL: {
+    case UPDATE_ROLE_FAIL: {
       return { loading: false, error: action.payload };
     }
 
-    case USER_UPDATE_PROFILE_RESET: {
+    case USER_DETAILS_RESET: {
       return {};
     }
 
@@ -113,6 +117,22 @@ export const userListReducer = (state = { users: [] }, action) => {
       return { users: [] };
     }
 
+    default:
+      return state;
+  }
+};
+
+
+export const updateUserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_ROLE_REQUEST:
+      return { loading: true };
+    case UPDATE_ROLE_SUCCESS:
+      return { loading: false, success: true };
+    case UPDATE_ROLE_FAIL:
+      return { loading: false, error: action.payload };
+    case UPDATE_ROLE_RESET:
+      return {}; // Reset state to initial value
     default:
       return state;
   }

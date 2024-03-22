@@ -15,6 +15,7 @@ import UserListScreen from "./screens/UserListScreen";
 import Productlist from "./screens/Productlist";
 import CheckoutSuccess from"./screens/checkoutSuccess"
 import  NotFound from "./screens/404/notfound"
+import  OrderListScreen from "./screens/OrderList"
 
 
 import "./index.css"
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/admin/userList" element={<UserListScreen />} />
             <Route path="/admin/productAdd" element={<Productlist />} />
             <Route path="/" element={<HomeScreen />} />
+            <Route path="/admin/OrderList" element={<OrderListScreen/>}/>
             <Route  path="/CheckoutSuccess" element={<CheckoutSuccess />}/>
             <Route path="*" element={<NotFound/>}/>
            

@@ -21,6 +21,7 @@ import {
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import PayButton from "../components/payButton";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
 
 const ProfileScreen = ({ location }) => {
@@ -150,21 +151,25 @@ const ProfileScreen = ({ location }) => {
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice}</td>
                   <td>
-                    {/* {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
+                    { order.isPaid ? (
+                      // order.paidAt.substring(0, 10)
+                      <i class="bi bi-check2"
+                      style={{ color: "green" }}
+                    ></i>
                     ) : (
                       <i class="bi bi-x-lg" style={{ color: "red" }}></i>
-                    )} */}
+                    )}
 
-<i class="bi bi-x-lg" style={{ color: "red" }}></i>
+
                   </td>
-                  {order.isPaid && (
+                  {order.isPaid ?(
                     <td>
                     <LinkContainer to={`/order/${order._id}`}>
                       <Button className="btn-sm" variant="light">Downlord</Button>
                     </LinkContainer>
                   </td>
- )}                  
+ ):(<PayButton orderItems ={order.orderItems} orderId ={order._id} total={order.totalPrice}/>)
+ }                  
                 </tr>
               ))}
             </tbody>

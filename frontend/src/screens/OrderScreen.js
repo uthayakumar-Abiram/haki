@@ -163,7 +163,7 @@ const OrderScreen = () => {
                 </Row>
               </ListGroupItem>
              
-             <PayButton orderItems ={order.orderItems}/>
+             <PayButton orderItems ={order.orderItems} orderId ={order._id} total={order.totalPrice}/>
                     
         
             </ListGroup>

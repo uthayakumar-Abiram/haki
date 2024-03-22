@@ -36,7 +36,7 @@ const Header = () => {
 <LinkContainer to="/admin/productAdd">
 <Dropdown.Item>Games</Dropdown.Item>
 </LinkContainer>
-<LinkContainer to="/admin/orderList">
+<LinkContainer to="/admin/OrderList">
 <Dropdown.Item>Purchase</Dropdown.Item>
 </LinkContainer>
 </DropdownButton>)}

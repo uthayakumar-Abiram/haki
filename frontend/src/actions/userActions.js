@@ -1,6 +1,9 @@
 import axios from "axios";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
 import {
+  UPDATE_ROLE_FAIL,
+  UPDATE_ROLE_REQUEST,
+  UPDATE_ROLE_SUCCESS,
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_RESET,
@@ -208,6 +211,41 @@ export const listUsers = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
+
+export const updateRole = (id, role) => async (dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_ROLE_REQUEST,
+    });
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const { data } = await axios.put(
+      `/api/users/edit/${id}`, // Corrected URL format
+      { role },
+      console.log(role),
+      config
+    );
+  
+
+    dispatch({
+      type: UPDATE_ROLE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_ROLE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

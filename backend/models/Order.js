@@ -10,7 +10,8 @@ const orderSchema = new mongoose.Schema(
     orderItems: [
       {
         title: { type: String,  },
-        images: [
+        images:
+         [
           {
             public_id: String,
             url: String,

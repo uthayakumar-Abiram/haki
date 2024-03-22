@@ -10,7 +10,7 @@ const authUser = asynchandler(async(req, res) => {
   const {email,password}=req.body
 
   const user= await User.findOne({email})
-
+  if (user.role == "ban") throw new Error("Not Authorised");
   if (user && (await user.matchPassword(password))){
     generateToken(res,user._id)
     res.status(201).json({
@@ -31,42 +31,7 @@ else{
 // des Auth user/set token
 // route POST /api/users/admin-login
 // access admin
-export const login = async (req, res) => {
-  const { email, password } = req.body;
-  let user = null;
-  try {
-      const careneeder = await User.findOne({ email });
-      const caretaker = await Caretaker.findOne({ email });
-      
-      if (careneeder) {
-          user = careneeder;
-      } else if (caretaker) {
-          user = caretaker;
-      }
-      
-      // check if user exist or not
-      if (!user) {
-          return res.status(404).json({ message: "User not found" });
-      }
-      
-      if (user && (await user.matchPassword(password))) {
-          generateToken(res, user);
-          const token=generateToken(user);
-          const {password,role,appoinment, ...rest}= user._doc;
-          // Assuming token, data, and role are defined somewhere
-          res.status(201).json({
-              status: true,
-              message: "Successfully login",
-             
-          });
-      } else {
-          return res.status(401).json({ status: false, message: "Invalid credentials" });
-      }
-  } catch (err) {
-      console.error(err);
-      res.status(500).json({ status: false, message: "Failed to login" });
-  }
-};
+
      const loginAdmin = asynchandler(async (req, res) => {
       const {email,password}=req.body
       const user = await User.findOne({email});
@@ -146,6 +111,7 @@ const logoutUser = asynchandler(async(req, res) => {
 // @access Public
 
     const getUserProfile = asynchandler(async (req, res) => {
+       
         const user = await User.findById(req.user._id);
       
         if (user) {
@@ -161,11 +127,37 @@ const logoutUser = asynchandler(async(req, res) => {
         }
       });
       
+      const updateUser = async (req, res) => {
+        try {
+          const { id } = req.params;
+          const { role } = req.body;
+      console.log(req.body)
+          const user = await User.findById(id);
       
+          if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+          }
+      
+          // Update the user's role
+          user.role = role || user.role;
+          const updatedUser = await user.save();
+      
+          res.status(200).json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            role: updatedUser.role,
+          });
+        } catch (error) {
+          res.status(500).json({ message: error.message });
+        }
+      };
+          
 
 // @desc update user profile
 // route GET /api/Profile
 // @access Private
+
 
     const updateUserProfile = asynchandler(async(req, res) => {
        const user = await User.findById(req.user._id)
@@ -202,4 +194,4 @@ const logoutUser = asynchandler(async(req, res) => {
             };
 
   
-    export {authUser,registerUser,getUserProfile,logoutUser,updateUserProfile,deleteUser,loginAdmin ,getUsers};
+    export {updateUser ,authUser,registerUser,getUserProfile,logoutUser,updateUserProfile,deleteUser,loginAdmin ,getUsers};

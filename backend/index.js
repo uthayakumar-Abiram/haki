@@ -55,11 +55,14 @@ app.post('/api/pay/webhook', express.raw({type: 'application/json'}), (request, 
           .then(async (customer) => {
             try {
               const userId = customer.metadata.user;
-              console.log(userId)
-              const order = await Order.findOne( { user:userId } );
+              const orderId =customer.metadata.orderID
+              
+              console.log(orderId)
+              const order = await Order.findOne( { _id:orderId } );
           
               if (order) {
                 order.isPaid = true;
+                order.paidAt = Date.now()
                 const updatedOrder = await order.save(); // Corrected here
                 return updatedOrder;
               } else {
