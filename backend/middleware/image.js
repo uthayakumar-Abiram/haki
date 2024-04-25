@@ -1,5 +1,4 @@
 import multer from "multer";
-import sharp from "sharp";
 import path from"path";
 import fs from "fs";
 
