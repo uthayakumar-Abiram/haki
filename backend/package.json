@@ -1,17 +1,17 @@
 {
-  "name": "login-",
+  "name": "haki",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "type": "module",
+  "main": "index.js",  
+  "type": "module", 
   "engines": {
     "node": "18.x"
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js", 
     "server": "nodemon backend/index.js",
     "dev": "nodemon server.js",
-    "prod": "set NODE_ENV=production&&nodemon backend/index.js"
+    "prod": "NODE_ENV=production node backend/index.js" 
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,9 @@
     "stripe": "^14.18.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0"
   }
+
 }
